@@ -1,0 +1,8 @@
+[package]
+name = "RustProject"
+version = "0.1.0"
+authors = ["Ezra Farrar", "Ian McBride", "Mark _"]
+edition = "2018"
+
+[dependencies]
+amethyst = "0.10.0"
