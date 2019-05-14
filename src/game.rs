@@ -9,8 +9,8 @@ use amethyst::renderer::{
 };
 //use amethyst::ui::{Anchor, TtfFormat, UiText, UiTransform};
 
-pub const ARENA_HEIGHT: f32 = 100.0;
-pub const ARENA_WIDTH: f32 = 100.0;
+pub const ARENA_HEIGHT: f32 = 1000.0;
+pub const ARENA_WIDTH: f32 = 1000.0;
 
 pub struct Game;
 
@@ -41,7 +41,7 @@ impl Player {
         Player {
             width: 1.0,
             height: 1.0,
-            velocity: [10.0, 10.0],
+            velocity: [100.0, 100.0],
         }
     }
 }
@@ -59,7 +59,7 @@ fn initialize_player(world: &mut World, sprite_sheet: SpriteSheetHandle) {
     //assign a sprite to the player
     let sprite_render = SpriteRender {
         sprite_sheet: sprite_sheet,
-        sprite_number: 1,
+        sprite_number: 0,
     };
 
     //build an entity that is a player and has transform and sprite components
@@ -78,7 +78,7 @@ fn load_sprite_sheet(world: &mut World) -> SpriteSheetHandle {
         let loader = world.read_resource::<Loader>();
         let texture_storage = world.read_resource::<AssetStorage<Texture>>();
         loader.load(
-            "texture/pong_spritesheet.png",
+            "texture/player.png",
             PngFormat,
             TextureMetadata::srgb_scale(),
             (),
