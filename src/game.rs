@@ -39,8 +39,8 @@ pub struct Player {
 impl Player {
     fn new() -> Player {
         Player {
-            width: 1.0,
-            height: 1.0,
+            width: 64.0,
+            height: 64.0,
             velocity: [100.0, 100.0],
         }
     }
