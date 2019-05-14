@@ -6,9 +6,8 @@ use amethyst::prelude::*;
 use amethyst::renderer::{
     Camera, PngFormat, Projection, SpriteRender, SpriteSheet,
     SpriteSheetFormat, SpriteSheetHandle, Texture, TextureMetadata,
-    Flipped
 };
-use amethyst::ui::{Anchor, TtfFormat, UiText, UiTransform};
+//use amethyst::ui::{Anchor, TtfFormat, UiText, UiTransform};
 
 pub const ARENA_HEIGHT: f32 = 100.0;
 pub const ARENA_WIDTH: f32 = 100.0;
@@ -22,7 +21,7 @@ impl SimpleState for Game {
         let sprite_sheet_handle = load_sprite_sheet(world);
 
         //remove once systems interact with it
-        world.register::<Player>();
+        //world.register::<Player>();
 
         //initialize actors/components
         initialize_player(world, sprite_sheet_handle);
@@ -34,6 +33,7 @@ impl SimpleState for Game {
 pub struct Player {
     pub width: f32,
     pub height: f32,
+    pub velocity: [f32; 2],
 }
 
 impl Player {
@@ -41,6 +41,7 @@ impl Player {
         Player {
             width: 1.0,
             height: 1.0,
+            velocity: [10.0, 10.0],
         }
     }
 }
