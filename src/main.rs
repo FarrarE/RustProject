@@ -42,7 +42,8 @@ fn main() -> amethyst::Result<()> {
         .with_sprite_sheet_processor())?
         .with_bundle(TransformBundle::new())?
         .with_bundle(input_bundle)?
-        .with(systems::MovePlayerSystem, "move_player_system", &["input_system"]);
+        .with(systems::MovePlayerSystem, "move_player_system", &["input_system"])
+        .with(systems::ShootSystem, "shoot_system", &["input_system"]);
 
     let mut game = Application::new("./", Game, game_data)?;
 
