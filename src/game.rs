@@ -70,6 +70,26 @@ fn initialize_player(world: &mut World, sprite_sheet: SpriteSheetHandle) {
         .build();
 }
 
+// Projectile Component
+pub struct Projectile {
+    pub width: f32,
+    pub height: f32,
+    pub velocity: [f32; 2],
+}
+
+impl Projectile {
+    fn new() -> Projectile {
+        Projectile {
+            width: 10.0,
+            height: 10.0,
+            velocity: [150.0, 150.0],
+        }
+    }
+}
+
+impl Component for Projectile {
+    type Storage = DenseVecStorage<Self>;
+}
 
 
 //Asset Loading
