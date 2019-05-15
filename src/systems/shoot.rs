@@ -22,7 +22,7 @@ impl<'s> System<'s> for ShootSystem {
 
             if let Some(fire) = input.action_is_down("fire") {
                 if fire {
-                    println!("FIRE!!!: {:?}", fire);
+                    println!("FIRE!!!: {:?}", transform.translation());
                 }
                 
             }
