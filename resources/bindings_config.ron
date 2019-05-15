@@ -4,6 +4,6 @@
         "horizontal": Emulated(pos: Key(D), neg: Key(A)),
     },
     actions: {
-        "fire": [[Key(Space)]],
+        "fire": [[Key(Space)], [Mouse(Left)]],
     },
 )
