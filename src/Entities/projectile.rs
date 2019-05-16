@@ -4,7 +4,7 @@ use amethyst::core::nalgebra::Vector3;
 
 use super::png_mesh_and_material;
 use crate::config::GAME_CONFIGURATION;
-use crate::components::Projectie as ProjectileComponent;
+use crate::components::Projectile as ProjectileComponent;
 use crate::resources::ProjectileResource;
 
 pub fn initialise_projectile_resource(world: &mut World) -> ProjectileResource {

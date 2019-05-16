@@ -1,6 +1,5 @@
 use amethyst::ecs::prelude::{Component, DenseVecStorage};
 
-/// Component for our asteroid-destroying laser beam.
 #[derive(Clone)]
 pub struct Projectile {
     /// The speed of our laser beam
