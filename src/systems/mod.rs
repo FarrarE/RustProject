@@ -1,5 +1,5 @@
 //mod stuff here
 mod player;
-mod shoot;
+mod projectile;
 
-pub use self::{player::MovePlayerSystem, shoot::ShootSystem};
+pub use self::{player::PlayerSystem, projectile::ProjectileSystem};

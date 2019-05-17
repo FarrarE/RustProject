@@ -1,4 +1,4 @@
-#![deny(missing_docs)]
+//#![deny(missing_docs)]
 extern crate amethyst;
 
 mod config;
@@ -32,7 +32,7 @@ pub fn run() -> Result<(), amethyst::Error> {
   let application_root = application_root_dir();
   let display_config_path =  format!("{}/resources/display_config.ron", application_root);
   let display_config = DisplayConfig::load(&display_config_path);
-  let key_bindings_path = application_root.join("resources/bindings_config.ron");
+  let key_bindings_path = format!("{}/resources/bindings_config.ron", application_root);
   let resources_path = format!("{}/texture", application_root);
 
     let pipe = {
@@ -57,11 +57,15 @@ pub fn run() -> Result<(), amethyst::Error> {
     .with_bundle(UiBundle::<String, String>::new())?
     .with_bundle(RenderBundle::new(pipe, Some(display_config)))?;
 
+    println!("MAIN CREATING APPLICATION, BUNDLE COMPLETE");
+
     // Create a game with out game data and our GameState.
     let mut game = Application::new(
         resources_path,
         GameState,
         game_data)?;
+    
+    println!("APPLICATION CREATED");
 
     Ok(
         game.run(),
@@ -69,6 +73,14 @@ pub fn run() -> Result<(), amethyst::Error> {
 
 }
 
+
+fn main() {
+    amethyst::start_logger(Default::default());
+    if let Err(e) = run() {
+        println!("ERROR: {}", e);
+        std::process::exit(1);
+    }
+}
 /*
 use crate::game::Game;
 

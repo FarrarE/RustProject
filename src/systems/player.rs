@@ -1,4 +1,6 @@
-use crate::game::{Player, ARENA_HEIGHT, ARENA_WIDTH};
+use crate::components::Player;
+use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
+
 use amethyst::{
     core::{timing::Time, transform::Transform},
     ecs::prelude::{Join, Read, ReadStorage, System, WriteStorage},
@@ -6,9 +8,9 @@ use amethyst::{
 };
 
 //This system is responsible for moving the player based on provided input
-pub struct MovePlayerSystem;
+pub struct PlayerSystem;
 
-impl<'s> System<'s> for MovePlayerSystem {
+impl<'s> System<'s> for PlayerSystem {
     type SystemData = (
         ReadStorage<'s, Player>,
         WriteStorage<'s, Transform>,
@@ -17,9 +19,17 @@ impl<'s> System<'s> for MovePlayerSystem {
     );
 
     fn run(&mut self, (players, mut transforms, time, input): Self::SystemData) {
+        println!("PLAYER SYSTEM");
         for(player, transform) in (&players, &mut transforms).join() {
             let vert = input.axis_value("vertical");
             let horiz = input.axis_value("horizontal");
+
+            if let Some(fire) = input.action_is_down("fire") {
+                if fire {
+                    println!("FIRE!!!: {:?}", transform.translation());
+                }
+                
+            }
 
             if let Some(movement) = vert {
                 //println!("{:?}", vert);

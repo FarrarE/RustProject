@@ -10,5 +10,8 @@ pub struct Projectile {
     pub height: f32,
 }
 
-impl Component for Projectile {
+impl Component for Projectile { 
+    type Storage = DenseVecStorage<Self>;
+}
+
   

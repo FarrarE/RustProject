@@ -2,20 +2,20 @@ use amethyst::ecs::prelude::{World, Entities, Entity, LazyUpdate, ReadExpect};
 use amethyst::core::transform::{Transform};
 use amethyst::core::nalgebra::Vector3;
 
-use super::png_mesh_and_material;
+use super::png_mesh_and_mat;
 use crate::config::GAME_CONFIGURATION;
 use crate::components::Projectile as ProjectileComponent;
 use crate::resources::ProjectileResource;
 
 pub fn initialise_projectile_resource(world: &mut World) -> ProjectileResource {
-    let (mesh, material) = png_mesh_and_material("texture/player.png", [9.0,54.0], world);
+    let (mesh, material) = png_mesh_and_mat("texture/player.png", [64.0,64.0], world);
     let projectile_resource = ProjectileResource {
         mesh,
         material,
         component: ProjectileComponent {
             velocity: GAME_CONFIGURATION.projectile_velocity,
-            width: 9.0,
-            height: 54.0,
+            width: 64.0,
+            height: 64.0,
         },
     };
     world.add_resource(projectile_resource.clone());
