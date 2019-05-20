@@ -18,6 +18,6 @@ impl<'s> System<'s> for ProjectileSystem {
     );
 
     fn run(&mut self, (mut transforms, projectiles, input): Self::SystemData) {
-        println!("PROJECTILE SYSTEM");
+        
     }
 }
