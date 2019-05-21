@@ -1,8 +1,14 @@
 [package]
 name = "RustProject"
 version = "0.1.0"
-authors = ["Ezra Farrar", "Ian McBride", "Mark _"]
+authors = ["Ezra Farrar", "Ian McBride", "Mark Williams"]
 edition = "2018"
 
 [dependencies]
 amethyst = "0.10.0"
+lazy_static = "*"
+rand = "*"
+serde = "*"
+serde_derive = "*"
+gfx_core = "*"
+gfx = "*"

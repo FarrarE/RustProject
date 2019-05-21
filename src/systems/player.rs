@@ -1,25 +1,51 @@
-use crate::game::{Player, ARENA_HEIGHT, ARENA_WIDTH};
+use crate::components::Player;
+use crate::config::{ARENA_HEIGHT, ARENA_WIDTH, GAME_CONFIGURATION};
+
 use amethyst::{
-    core::{timing::Time, transform::Transform},
+    core::{timing::Time, transform::Transform, nalgebra::Vector3},
     ecs::prelude::{Join, Read, ReadStorage, System, WriteStorage},
     input::InputHandler,
 };
 
 //This system is responsible for moving the player based on provided input
-pub struct MovePlayerSystem;
+pub struct PlayerSystem;
 
-impl<'s> System<'s> for MovePlayerSystem {
+impl<'s> System<'s> for PlayerSystem {
     type SystemData = (
-        ReadStorage<'s, Player>,
+        WriteStorage<'s, Player>,
         WriteStorage<'s, Transform>,
         Read<'s, Time>,
         Read<'s, InputHandler<String, String>>,
     );
 
-    fn run(&mut self, (players, mut transforms, time, input): Self::SystemData) {
-        for(player, transform) in (&players, &mut transforms).join() {
+    fn run(&mut self, (mut players, mut transforms, time, input): Self::SystemData) {
+        
+        for(player, transform) in (&mut players, &mut transforms).join() {
             let vert = input.axis_value("vertical");
             let horiz = input.axis_value("horizontal");
+
+            //count down towards next shot
+            if player.trigger_reset_timer > 0.0 {
+                player.trigger_reset_timer -= time.delta_seconds();
+            }
+
+            if let Some(fire) = input.action_is_down("fire") {
+                //
+                if fire && player.trigger_reset_timer <= 0.0 {
+                    println!("FIRE!!!: {:?}", transform.translation());
+                    //build a position vector for a projectile to spawn at
+                    let fire_pos = Vector3::new(
+                        transform.translation().x + player.width / 2.0,
+                        transform.translation().y + player.height,
+                        0.0,
+                    );
+                    //fire(STUFF)
+
+                    //reset the timer
+                    player.trigger_reset_timer = GAME_CONFIGURATION.trigger_reset_timeout;
+                }
+                
+            }
 
             if let Some(movement) = vert {
                 //println!("{:?}", vert);
