@@ -1,5 +1,6 @@
 pub mod player;
 pub mod projectile;
+pub mod camera;
 
 use amethyst::ecs::prelude::World;
 use amethyst::renderer::{PngFormat, Texture, TextureMetadata, PosTex, Mesh, Material, MaterialDefaults};
@@ -10,6 +11,7 @@ use amethyst::core::nalgebra::{Vector2, Vector3};
 
 pub fn init_entities(world: &mut World) {
     player::initialise_player(world);
+    camera::initialise_camera(world);
 }
 
 pub fn png_mesh_and_mat(name: &'static str, png_sz: [f32; 2], world: &mut World) -> (Handle<Mesh>, Material) {

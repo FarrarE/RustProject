@@ -1,11 +1,13 @@
 use amethyst::prelude::Builder;
 use amethyst::ecs::prelude::{Entity, World};
-use amethyst::core::transform::GlobalTransform;
+use amethyst::core::transform::Transform;
 use amethyst::renderer::{Camera, Projection};
 use amethyst::core::nalgebra::{Matrix4, Vector3};
 
+use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
+
 //Create a camera entity
-fn initialize_camera(world: &mut World) {
+pub fn initialise_camera(world: &mut World) {
     let mut transform = Transform::default();
     transform.set_z(1.0);
     world
