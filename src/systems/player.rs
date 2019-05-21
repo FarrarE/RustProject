@@ -57,8 +57,8 @@ impl<'s> System<'s> for PlayerSystem {
                 let player_y = transform.translation().y;
                 transform.set_y(
                     player_y
-                        .max(player.height * 0.5)
-                        .min(ARENA_HEIGHT - player.height * 0.5),
+                        .max(0.0)
+                        .min(ARENA_HEIGHT - player.height),
                 );
             }
             if let Some(movement) = horiz {
@@ -71,8 +71,8 @@ impl<'s> System<'s> for PlayerSystem {
                 let player_x = transform.translation().x;
                 transform.set_x(
                     player_x
-                        .max(player.width * 0.5)
-                        .min(ARENA_WIDTH - player.width * 0.5),
+                        .max(0.0)
+                        .min(ARENA_WIDTH - player.width),
                 );
             }
         }
