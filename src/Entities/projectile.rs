@@ -8,7 +8,8 @@ use crate::components::Projectile as ProjectileComponent;
 use crate::resources::ProjectileResource;
 
 pub fn initialise_projectile_resource(world: &mut World) -> ProjectileResource {
-    let (mesh, material) = png_mesh_and_mat("texture/player.png", [64.0,64.0], world);
+    let (mesh, material) = png_mesh_and_mat("projectile.png", [64.0,64.0], world);
+
     let projectile_resource = ProjectileResource {
         mesh,
         material,

@@ -1,9 +1,11 @@
 use crate::components::Player;
+use crate::resources::ProjectileResource;
+use crate::entities::fire_projectile;
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH, GAME_CONFIGURATION};
 
 use amethyst::{
     core::{timing::Time, transform::Transform, nalgebra::Vector3},
-    ecs::prelude::{Join, Read, ReadStorage, System, WriteStorage},
+    ecs::prelude::{Join, Read, ReadStorage, ReadExpect, System, WriteStorage, Entities, LazyUpdate},
     input::InputHandler,
 };
 
@@ -12,13 +14,16 @@ pub struct PlayerSystem;
 
 impl<'s> System<'s> for PlayerSystem {
     type SystemData = (
+        Entities<'s>,
         WriteStorage<'s, Player>,
         WriteStorage<'s, Transform>,
         Read<'s, Time>,
         Read<'s, InputHandler<String, String>>,
+        ReadExpect<'s, ProjectileResource>,
+        ReadExpect<'s, LazyUpdate>,
     );
 
-    fn run(&mut self, (mut players, mut transforms, time, input): Self::SystemData) {
+    fn run(&mut self, (entities, mut players, mut transforms, time, input, projectile_resource, lazy_update): Self::SystemData) {
         
         for(player, transform) in (&mut players, &mut transforms).join() {
             let vert = input.axis_value("vertical");
@@ -40,7 +45,7 @@ impl<'s> System<'s> for PlayerSystem {
                         0.0,
                     );
                     //fire(STUFF)
-
+                    fire_projectile(&entities, &projectile_resource, fire_pos,&lazy_update);
                     //reset the timer
                     player.trigger_reset_timer = GAME_CONFIGURATION.trigger_reset_timeout;
                 }

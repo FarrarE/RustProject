@@ -8,10 +8,13 @@ use amethyst::assets::{AssetStorage, Loader, Handle};
 use amethyst::core::nalgebra::{Vector2, Vector3};
 
 //pub use self::entity??::{methodnames} //to make methods available elsewhere 
+pub use self::projectile::fire_projectile;
+
 
 pub fn init_entities(world: &mut World) {
     player::initialise_player(world);
     camera::initialise_camera(world);
+    projectile::initialise_projectile_resource(world);
 }
 
 pub fn png_mesh_and_mat(name: &'static str, png_sz: [f32; 2], world: &mut World) -> (Handle<Mesh>, Material) {
