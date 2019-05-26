@@ -19,10 +19,10 @@ impl<'s> System<'s> for ProjectileSystem {
       Read<'s, Time>,
     );
 
-    fn run(&mut self, (entities, time, mut transforms, projectiles, input): Self::SystemData) {
+    fn run(&mut self, (entities, mut transforms, projectiles, input, time): Self::SystemData) {
 
       for (projectile_entity, _projectile_component, projectile_transform) in (&*entities, &projectiles, &mut transforms).join() {
-        projectile_transform.translate_y(GAME_CONFIGURATION.projectile_velocity * time.delta_seconds();
+        projectile_transform.translate_y(GAME_CONFIGURATION.projectile_velocity * time.delta_seconds()) ;
 
         // Delete the laser if it has gone off the screen
         if projectile_transform.translation()[1] > 1024. {
