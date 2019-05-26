@@ -37,7 +37,10 @@ impl<'s> System<'s> for PlayerSystem {
             if let Some(fire) = input.action_is_down("fire") {
                 //
                 if fire && player.trigger_reset_timer <= 0.0 {
-                    println!("FIRE!!!: {:?}", input.mouse_position());
+
+                    let Some(x, y) = input.mouse_position();
+                    println!("FIRE!!!: {:?}", x);
+                    
                     //build a position vector for a projectile to spawn at
                     let fire_pos = Vector3::new(
                         transform.translation().x + player.width / 2.0,
