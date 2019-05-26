@@ -1,5 +1,5 @@
 [package]
-name = "RustProject"
+name = "pea_shooter"
 version = "0.1.0"
 authors = ["Ezra Farrar", "Ian McBride", "Mark Williams"]
 edition = "2018"

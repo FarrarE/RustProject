@@ -1,9 +1,8 @@
 use amethyst::core::bundle::{SystemBundle, Result};
 use amethyst::ecs::prelude::{DispatcherBuilder};
 
-use crate::components::*;
 use crate::systems::*;
-use crate::resources::{PlayState};
+
 
 /// A bundle is a convenient way to initialise related resources, components and systems in a
 /// world.

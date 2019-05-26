@@ -5,7 +5,7 @@ use crate::config::{ARENA_HEIGHT, ARENA_WIDTH, GAME_CONFIGURATION};
 
 use amethyst::{
     core::{timing::Time, transform::Transform, nalgebra::Vector3},
-    ecs::prelude::{Join, Read, ReadStorage, ReadExpect, System, WriteStorage, Entities, LazyUpdate},
+    ecs::prelude::{Join, Read, ReadExpect, System, WriteStorage, Entities, LazyUpdate},
     input::InputHandler,
 };
 
@@ -50,8 +50,8 @@ impl<'s> System<'s> for PlayerSystem {
                     );
 
                     if let Some((x, y)) = input.mouse_position() {
-                      run = (x as f32 - fire_pos.x);
-                      rise = ((1000.0 - y) as f32 - fire_pos.y);
+                      run = x as f32 - fire_pos.x;
+                      rise = (1000.0 - y) as f32 - fire_pos.y;
                     }
                     
 

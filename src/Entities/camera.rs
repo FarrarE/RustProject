@@ -1,8 +1,7 @@
 use amethyst::prelude::Builder;
-use amethyst::ecs::prelude::{Entity, World};
+use amethyst::ecs::prelude::{World};
 use amethyst::core::transform::Transform;
 use amethyst::renderer::{Camera, Projection};
-use amethyst::core::nalgebra::{Matrix4, Vector3};
 
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
 

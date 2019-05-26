@@ -1,8 +1,6 @@
 use amethyst::prelude::Builder;
 use amethyst::ecs::prelude::{Entity, World};
-use amethyst::core::nalgebra::Vector3;
-use amethyst::core::transform::{Transform, GlobalTransform};
-use amethyst::utils::application_root_dir;
+use amethyst::core::transform::{Transform};
 
 use crate::components::Player;
 use super::png_mesh_and_mat;
@@ -13,7 +11,6 @@ const PLAYER_HEIGHT: f32 = 64.0;
 const PLAYER_WIDTH: f32 = 64.0;
 
 pub fn initialise_player(world: &mut World) -> Entity {
-    let application_root = application_root_dir();
     let mut trans = Transform::default();
     let (mesh, material) = png_mesh_and_mat(
         "player.png",
