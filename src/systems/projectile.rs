@@ -27,9 +27,16 @@ impl<'s> System<'s> for ProjectileSystem {
         projectile_transform.translate_y(projectile_component.rise * GAME_CONFIGURATION.projectile_velocity * time.delta_seconds());
         projectile_transform.translate_x(projectile_component.run * GAME_CONFIGURATION.projectile_velocity * time.delta_seconds());
 
-        // Delete the laser if it has gone off the screen
-        if projectile_transform.translation()[1] > 1024. {
+        // Delete the projectile if it has gone off the screen
+        if projectile_transform.translation()[1] > ARENA_HEIGHT || projectile_transform.translation()[1] < 0.0 {
             let _result = entities.delete(projectile_entity);
+            println!("Deleting: {:?}", _result);
+        }
+
+        // Delete the projectile if it has gone off the screen
+        else if projectile_transform.translation()[0] > ARENA_WIDTH || projectile_transform.translation()[0] < 0.0 {
+            let _result = entities.delete(projectile_entity);
+            println!("Deleting: {:?}", _result);
         }
       }
         

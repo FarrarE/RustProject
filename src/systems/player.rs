@@ -44,18 +44,18 @@ impl<'s> System<'s> for PlayerSystem {
                     
                     //build a position vector for a projectile to spawn at
                     let fire_pos = Vector3::new(
-                      transform.translation().x,
-                      transform.translation().y,
+                      transform.translation().x + player.width / 2.0 - projectile_resource.component.width / 2.0,
+                      transform.translation().y + player.height / 2.0 - projectile_resource.component.height / 2.0,
                       0.0,
                     );
 
                     if let Some((x, y)) = input.mouse_position() {
                       run = (x as f32 - fire_pos.x);
-                      rise = -(y as f32 - fire_pos.y);
+                      rise = ((1000.0 - y) as f32 - fire_pos.y);
                     }
                     
 
-                    println!("FIRE!!!: {} / {}", rise, run);
+                    println!("FIRE!!!: char: {:?}, mouse: {:?}", transform.translation(), input.mouse_position());
 
                     //fire(STUFF)
                     fire_projectile(&entities, &projectile_resource, fire_pos, &lazy_update, rise, run);
