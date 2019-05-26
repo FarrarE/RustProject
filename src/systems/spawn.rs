@@ -5,6 +5,7 @@ use amethyst::{
 use rand::Rng;
 
 use crate::components::{Enemy};
+use crate::entities::ENEMY_HEIGHT;
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::config::GAME_CONFIGURATION;
 use crate::resources::EnemyResource;
@@ -39,7 +40,7 @@ impl<'s> System<'s> for SpawnSystem {
             let mut trans = Transform::default();
 
             //edge numbers start with edge 0 on the left of the screen and go clockwise
-            let location = rng.gen_range(0.0, 1000.0);
+            let location = rng.gen_range(0.0, ARENA_HEIGHT - ENEMY_HEIGHT);
             let edge = rng.gen_range(0, 4);
             //println!("EDGE: {}", edge);
             match edge {

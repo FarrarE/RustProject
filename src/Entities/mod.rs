@@ -10,6 +10,7 @@ use amethyst::core::nalgebra::{Vector2, Vector3};
 
 //pub use self::entity??::{methodnames} //to make methods available elsewhere 
 pub use self::projectile::fire_projectile;
+pub use self::enemy::{ENEMY_HEIGHT, ENEMY_WIDTH};
 
 
 pub fn init_entities(world: &mut World) {
