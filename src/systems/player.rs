@@ -40,8 +40,8 @@ impl<'s> System<'s> for PlayerSystem {
                     println!("FIRE!!!: {:?}", transform.translation());
                     //build a position vector for a projectile to spawn at
                     let fire_pos = Vector3::new(
-                        transform.translation().x + player.width,
-                        transform.translation().y + player.height,
+                        transform.translation().x + player.width / 2.0,
+                        transform.translation().y + player.height / 2.0,
                         0.0,
                     );
                     //fire(STUFF)
