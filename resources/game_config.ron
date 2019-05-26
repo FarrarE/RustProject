@@ -5,4 +5,5 @@
   trigger_reset_timeout: 0.5,
   wait_for_first_spawn: 2,
   monster_density: 0.2,
+  max_monster_count: 100,
 )
