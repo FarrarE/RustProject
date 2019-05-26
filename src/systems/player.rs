@@ -29,6 +29,9 @@ impl<'s> System<'s> for PlayerSystem {
             let vert = input.axis_value("vertical");
             let horiz = input.axis_value("horizontal");
 
+            let mut rise = 0.0;
+            let mut run = 0.0;
+
             //count down towards next shot
             if player.trigger_reset_timer > 0.0 {
                 player.trigger_reset_timer -= time.delta_seconds();
@@ -38,17 +41,24 @@ impl<'s> System<'s> for PlayerSystem {
                 //
                 if fire && player.trigger_reset_timer <= 0.0 {
 
-                    let Some(x, y) = input.mouse_position();
-                    println!("FIRE!!!: {:?}", x);
                     
                     //build a position vector for a projectile to spawn at
                     let fire_pos = Vector3::new(
-                        transform.translation().x + player.width / 2.0,
-                        transform.translation().y + player.height / 2.0,
-                        0.0,
+                      transform.translation().x + player.width / 2.0,
+                      transform.translation().y + player.height / 2.0,
+                      0.0,
                     );
+
+                    if let Some((x, y)) = input.mouse_position() {
+                      rise = (x as f32 - fire_pos.x);
+                      run = (y as f32 - fire_pos.y);
+                    }
+                    
+
+                    println!("FIRE!!!: {} / {}", rise, run);
+
                     //fire(STUFF)
-                    fire_projectile(&entities, &projectile_resource, fire_pos, &lazy_update);
+                    fire_projectile(&entities, &projectile_resource, fire_pos, &lazy_update, rise, run);
                     //reset the timer
                     player.trigger_reset_timer = GAME_CONFIGURATION.trigger_reset_timeout;
                 }

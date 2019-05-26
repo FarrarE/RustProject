@@ -8,6 +8,11 @@ pub struct Projectile {
     pub width: f32,
     /// The height of our laser beam
     pub height: f32,
+
+    pub rise: f32,
+
+    pub run: f32,
+    
 }
 
 impl Component for Projectile { 

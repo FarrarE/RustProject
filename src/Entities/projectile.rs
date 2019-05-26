@@ -27,7 +27,9 @@ pub fn fire_projectile(
     entities: &Entities,
     projectile_resource: &ReadExpect<ProjectileResource>,
     fire_position: Vector3<f32>,
-    lazy_update: &ReadExpect<LazyUpdate>)
+    lazy_update: &ReadExpect<LazyUpdate>,
+    rise: f32,
+    run: f32)
 {
     let projectile_entity:Entity = entities.create();
     let local_transform = {
