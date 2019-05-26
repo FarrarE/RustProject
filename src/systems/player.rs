@@ -50,8 +50,8 @@ impl<'s> System<'s> for PlayerSystem {
                     );
 
                     if let Some((x, y)) = input.mouse_position() {
-                      rise = (x as f32 - fire_pos.x);
-                      run = (y as f32 - fire_pos.y);
+                      run = (x as f32 - fire_pos.x);
+                      rise = -(y as f32 - fire_pos.y);
                     }
                     
 
