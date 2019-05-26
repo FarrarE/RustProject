@@ -8,6 +8,7 @@ use crate::components::{Player, Projectile};
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::config::GAME_CONFIGURATION;
 
+// Allows System to be accessed publicaly 
 pub struct ProjectileSystem;
 
 impl<'s> System<'s> for ProjectileSystem {
@@ -19,7 +20,7 @@ impl<'s> System<'s> for ProjectileSystem {
       Read<'s, Time>,
     );
 
-    fn run(&mut self, (entities, mut transforms, projectiles, input, time): Self::SystemData) {
+    fn run(&mut self, (entities, projectiles, mut transforms, input, time): Self::SystemData) {
 
       for (projectile_entity, _projectile_component, projectile_transform) in (&*entities, &projectiles, &mut transforms).join() {
         projectile_transform.translate_y(GAME_CONFIGURATION.projectile_velocity * time.delta_seconds()) ;
