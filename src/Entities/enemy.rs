@@ -10,8 +10,8 @@ use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::config::GAME_CONFIGURATION;
 
 
-const ENEMY_HEIGHT: f32 = 50.0;
-const ENEMY_WIDTH: f32 = 50.0;
+pub const ENEMY_HEIGHT: f32 = 50.0;
+pub const ENEMY_WIDTH: f32 = 50.0;
 
 pub fn initialise_enemy_resource(world: &mut World) -> EnemyResource {
     let (mesh, material) = png_mesh_and_mat("HappyPie.png", [ENEMY_WIDTH, ENEMY_HEIGHT], world);
@@ -26,6 +26,7 @@ pub fn initialise_enemy_resource(world: &mut World) -> EnemyResource {
             
         },
         num_enemies: 0,
+        time_till_next_spawn: GAME_CONFIGURATION.monster_spawn_delay,
     };
     world.add_resource(enemy_resource.clone());
     enemy_resource
