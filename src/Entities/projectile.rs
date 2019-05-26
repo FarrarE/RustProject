@@ -17,6 +17,8 @@ pub fn initialise_projectile_resource(world: &mut World) -> ProjectileResource {
             velocity: GAME_CONFIGURATION.projectile_velocity,
             width: 20.0,
             height: 20.0,
+            rise: 0.0,
+            run: 0.0,
         },
     };
     world.add_resource(projectile_resource.clone());
@@ -42,6 +44,11 @@ pub fn fire_projectile(
     };
     lazy_update.insert(projectile_entity, projectile_resource.material.clone());
     lazy_update.insert(projectile_entity, projectile_resource.mesh.clone());
-    lazy_update.insert(projectile_entity, projectile_resource.component.clone());
+
+    let mut projectile_component = projectile_resource.component.clone();
+    projectile_component.rise = rise;
+    projectile_component.run = run;
+
+    lazy_update.insert(projectile_entity, projectile_component);
     lazy_update.insert(projectile_entity, local_transform);
 }
