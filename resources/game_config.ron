@@ -4,6 +4,6 @@
   projectile_velocity: 1.0,
   trigger_reset_timeout: 0.5,
   wait_for_first_spawn: 2,
-  monster_density: 0.2,
+  monster_spawn_delay: 1.0,
   max_monster_count: 100,
 )

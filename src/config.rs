@@ -16,9 +16,10 @@ pub struct GameConfiguration {
     /// how long to wait before the first asteroid falls (sec)
     #[serde(default)]
     pub wait_for_first_spawn: f32,
-    /// how close the asteroids are together
+
+    /// how long between spawns
     #[serde(default)]
-    pub monster_density: f32,
+    pub monster_spawn_delay: f32,
     /// laser vertical velocity
     #[serde(default)]
     pub projectile_velocity: f32,
@@ -35,7 +36,7 @@ pub const PLAYER_VELOCITY: f32 = 10.0;
 pub const MONSTER_VELOCITY: f32 = 8.0;
 pub const PROJECTILE_VELOCITY: f32 = 60.0;
 pub const WAIT_FOR_FIRST_SPAWN: f32 = 2.0;
-pub const MONSTER_DENSITY: f32 = 0.3;
+pub const MONSTER_SPAWN_DELAY: f32 = 0.3;
 pub const TRIGGER_RESET_TIMEOUT: f32 = 0.5;
 pub const MAX_MONSTER_COUNT: u8 = 100;
 
@@ -47,7 +48,7 @@ impl Default for GameConfiguration {
         GameConfiguration {
             player_velocity: PLAYER_VELOCITY,
             monster_velocity: MONSTER_VELOCITY,
-            monster_density: MONSTER_DENSITY,
+            monster_spawn_delay: MONSTER_SPAWN_DELAY,
             wait_for_first_spawn: WAIT_FOR_FIRST_SPAWN,
             projectile_velocity: PROJECTILE_VELOCITY,
             trigger_reset_timeout: TRIGGER_RESET_TIMEOUT,

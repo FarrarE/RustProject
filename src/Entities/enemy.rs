@@ -26,6 +26,7 @@ pub fn initialise_enemy_resource(world: &mut World) -> EnemyResource {
             
         },
         num_enemies: 0,
+        time_till_next_spawn: GAME_CONFIGURATION.monster_spawn_delay,
     };
     world.add_resource(enemy_resource.clone());
     enemy_resource

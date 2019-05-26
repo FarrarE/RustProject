@@ -8,4 +8,5 @@ pub struct EnemyResource {
     pub material: Material,
     pub component: EnemyComponent,
     pub num_enemies: u8,
+    pub time_till_next_spawn: f32,
 }
