@@ -25,6 +25,9 @@ pub struct GameConfiguration {
     /// how long to wait after firing a laser before can fire again
     #[serde(default)]
     pub trigger_reset_timeout: f32,
+
+    #[serde(default)]
+    pub max_monster_count: u8,
 }
 
 // Default values
@@ -34,6 +37,7 @@ pub const PROJECTILE_VELOCITY: f32 = 60.0;
 pub const WAIT_FOR_FIRST_SPAWN: f32 = 2.0;
 pub const MONSTER_DENSITY: f32 = 0.3;
 pub const TRIGGER_RESET_TIMEOUT: f32 = 0.5;
+pub const MAX_MONSTER_COUNT: u8 = 100;
 
 pub const ARENA_HEIGHT: f32 = 1000.0;
 pub const ARENA_WIDTH: f32 = 1000.0;
@@ -47,6 +51,7 @@ impl Default for GameConfiguration {
             wait_for_first_spawn: WAIT_FOR_FIRST_SPAWN,
             projectile_velocity: PROJECTILE_VELOCITY,
             trigger_reset_timeout: TRIGGER_RESET_TIMEOUT,
+            max_monster_count: MAX_MONSTER_COUNT,
         }
     }
 }

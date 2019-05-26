@@ -17,8 +17,8 @@ impl<'a, 'b> SystemBundle<'a, 'b> for GameBundle {
     fn build(self, builder: &mut DispatcherBuilder<'a, 'b>) -> Result<()> {
         builder.add(PlayerSystem, "player_system", &["input_system"]);
         builder.add(ProjectileSystem, "projectile_system", &[]);
-        // builder.add(ShipCollisionSystem, "collision_system", &["ship_system"]);
-        // builder.add(AsteroidSystem, "asteroid_system", &["collision_system"]);
+        builder.add(EnemySystem, "enemy_system", &[]);
+        builder.add(SpawnSystem, "spawn_system", &[]);
         // builder.add(LaserSystem, "laser_system", &["ship_system"]);
         // builder.add(LaserCollisionSystem, "laser_collision_system", &["laser_system"]);
         // builder.add(LivesSystem, "lives_system", &["collision_system"]);
