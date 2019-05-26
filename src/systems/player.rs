@@ -40,12 +40,12 @@ impl<'s> System<'s> for PlayerSystem {
                     println!("FIRE!!!: {:?}", transform.translation());
                     //build a position vector for a projectile to spawn at
                     let fire_pos = Vector3::new(
-                        transform.translation().x + player.width / 2.0,
+                        transform.translation().x + player.width,
                         transform.translation().y + player.height,
                         0.0,
                     );
                     //fire(STUFF)
-                    fire_projectile(&entities, &projectile_resource, fire_pos,&lazy_update);
+                    fire_projectile(&entities, &projectile_resource, fire_pos, &lazy_update);
                     //reset the timer
                     player.trigger_reset_timer = GAME_CONFIGURATION.trigger_reset_timeout;
                 }

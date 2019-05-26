@@ -8,15 +8,15 @@ use crate::components::Projectile as ProjectileComponent;
 use crate::resources::ProjectileResource;
 
 pub fn initialise_projectile_resource(world: &mut World) -> ProjectileResource {
-    let (mesh, material) = png_mesh_and_mat("projectile.png", [64.0,64.0], world);
+    let (mesh, material) = png_mesh_and_mat("projectile.png", [20.0,20.0], world);
 
     let projectile_resource = ProjectileResource {
         mesh,
         material,
         component: ProjectileComponent {
             velocity: GAME_CONFIGURATION.projectile_velocity,
-            width: 64.0,
-            height: 64.0,
+            width: 20.0,
+            height: 20.0,
         },
     };
     world.add_resource(projectile_resource.clone());
