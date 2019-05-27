@@ -33,9 +33,10 @@ impl<'s> System<'s> for EnemySystem {
       for (transform, enemy) in (&mut transforms, &enemies).join() {
         let start = (transform.translation().x, transform.translation().y);
         let end = (player_x, player_y);
-        let (x, y) = get_vector(start, end, enemy.velocity);
-        transform.translate_x(x * time.delta_seconds());
-        transform.translate_y(y * time.delta_seconds());
+        let (x, y) = get_vector(start, end);
+        transform.translate_x(x * enemy.velocity * time.delta_seconds());
+        transform.translate_y(y * enemy.velocity * time.delta_seconds());
+        println!("Pie AT: {:?}, moving ({}, {})", transform.translation(), x, y);
 
         // We make sure the enemy remains in the arena.
         let enemy_y = transform.translation().y;
