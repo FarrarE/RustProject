@@ -18,7 +18,7 @@ impl<'s> System<'s> for ProjectileCollisionSystem {
     fn run(&mut self, (entities, projectiles, transforms, mut enemies): Self::SystemData) {
 
       // For each projectile
-      for (projectile_entity, enemy_entity, projectile_component, projectile_transform) in (&*entities, &*entities, &projectiles, &transforms).join() {
+      for (projectile_entity, projectile_component, projectile_transform) in (&*entities, &projectiles, &transforms).join() {
           
           // Defines collision box for projectile
           let projectile_left = projectile_transform.translation()[0];
@@ -28,7 +28,7 @@ impl<'s> System<'s> for ProjectileCollisionSystem {
 
 
           // Checks to see if an enemy overlaps with a projectile
-          for (enemy_component, enemy_transform) in (&mut enemies, &transforms).join() {
+          for (enemy_entity, enemy_component, enemy_transform) in (&*entities, &mut enemies, &transforms).join() {
               // Set up a collision box for our enemy
               let enemy_left = enemy_transform.translation()[0];
               let enemy_bottom = enemy_transform.translation()[1];
@@ -43,10 +43,13 @@ impl<'s> System<'s> for ProjectileCollisionSystem {
                     ||
                     (enemy_top >= projectile_bottom && enemy_bottom <= projectile_top)
                     ){
+
                   // we have a collision. Delete the projectile
-                  //let _result = entities.delete(projectile_entity);
+                  let _result = entities.delete(projectile_entity);
+                  
                   // let the enemy system know the enemy is ready for respawn/relocation
                   let _result = entities.delete(enemy_entity);
+
                 }
             }
         }
