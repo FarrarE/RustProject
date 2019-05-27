@@ -33,6 +33,7 @@ impl<'s> System<'s> for EnemySystem {
       for (transform, enemy) in (&mut transforms, &enemies).join() {
         let start = (transform.translation().x, transform.translation().y);
         let end = (player_x, player_y);
+
         let (x, y) = get_vector(start, end);
         transform.translate_x(x * enemy.velocity * time.delta_seconds());
         transform.translate_y(y * enemy.velocity * time.delta_seconds());
@@ -45,7 +46,7 @@ impl<'s> System<'s> for EnemySystem {
                 .max(0.0)
                 .min(ARENA_HEIGHT - enemy.height),
         );
-        
+
         let enemy_x = transform.translation().x;
         transform.set_x(
             enemy_x
