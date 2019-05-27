@@ -39,6 +39,7 @@ impl<'s> System<'s> for EnemySystem {
         transform.translate_y(y * enemy.velocity * time.delta_seconds());
         
 
+
         // We make sure the enemy remains in the arena.
         let enemy_y = transform.translation().y;
         transform.set_y(
