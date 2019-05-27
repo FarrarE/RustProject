@@ -36,7 +36,7 @@ impl<'s> System<'s> for EnemySystem {
         let (x, y) = get_vector(start, end);
         transform.translate_x(x * enemy.velocity * time.delta_seconds());
         transform.translate_y(y * enemy.velocity * time.delta_seconds());
-        println!("Pie AT: {:?}, moving ({}, {})", transform.translation(), x, y);
+        
 
         // We make sure the enemy remains in the arena.
         let enemy_y = transform.translation().y;
