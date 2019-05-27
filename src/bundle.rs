@@ -20,7 +20,8 @@ impl<'a, 'b> SystemBundle<'a, 'b> for GameBundle {
         builder.add(EnemySystem, "enemy_system", &[]);
         builder.add(SpawnSystem, "spawn_system", &[]);
         // builder.add(LaserSystem, "laser_system", &["ship_system"]);
-        // builder.add(LaserCollisionSystem, "laser_collision_system", &["laser_system"]);
+        builder.add(ProjectileCollisionSystem, "projectile_collision_system", &["projectile_system"]);
+        builder.add(PlayerCollisionSystem, "player_collision_system", &[]);
         // builder.add(LivesSystem, "lives_system", &["collision_system"]);
         Ok(())
     }
