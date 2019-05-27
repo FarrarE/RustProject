@@ -3,9 +3,16 @@ mod player;
 mod projectile;
 mod enemy;
 mod spawn;
+mod projectile_collision;
+mod player_collision;
 
 
-pub use self::{player::PlayerSystem, projectile::ProjectileSystem, enemy::EnemySystem, spawn::SpawnSystem};
+pub use self::{player::PlayerSystem, 
+  projectile::ProjectileSystem, 
+  enemy::EnemySystem, 
+  spawn::SpawnSystem, 
+  projectile_collision::ProjectileCollisionSystem,
+  player_collision::PlayerCollisionSystem};
 
 //Returns the unit vector between a start and end point.
 <<<<<<< HEAD
