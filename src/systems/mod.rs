@@ -20,6 +20,7 @@ pub use self::{player::PlayerSystem,
 pub fn get_vector(start: (f32, f32), end: (f32, f32)) -> (f32 , f32) {
 =======
 pub fn get_vector(start: (f32, f32), end: (f32, f32)) -> (f32 , f32) {
+<<<<<<< HEAD
     // let left = end.0 < start.0;
     // let down = end.1 < start.1;
     // let theta = f32::atan(f32::abs(start.0 - end.0) / f32::abs(start.1 - end.1));
@@ -40,10 +41,13 @@ pub fn get_vector(start: (f32, f32), end: (f32, f32)) -> (f32 , f32) {
     //     (x, y)
     // }
 >>>>>>> Pies now home in on the player
+=======
+>>>>>>> Remove unused code and debug statements
     let dx = end.0 - start.0;
     let dy = end.1 - start.1;
     let mag = f32::sqrt(dx.powi(2) + dy.powi(2));
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     (dx / mag, dy / mag)
 =======
@@ -53,6 +57,8 @@ pub fn get_vector(start: (f32, f32), end: (f32, f32), velocity: f32 ) -> (f32 , 
 >>>>>>> Initial movement pass
 =======
 
+=======
+>>>>>>> Remove unused code and debug statements
     (dx / mag, dy / mag)
 >>>>>>> Pies now home in on the player
 }
