@@ -35,7 +35,11 @@ impl SimpleState for GameState {
         
         let play_state = world.read_resource::<PlayState>();
         
-        if play_state.lives == 0 { Trans::Quit} else { Trans::None }
+        if play_state.lives == 0 { 
+          //Trans::Quit
+          println!("Dead");
+          Trans::None
+          } else { Trans::None }
     }
 
     // This code tells Amethyst to run all the systems in your game data.

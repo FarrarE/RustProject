@@ -22,6 +22,7 @@ impl<'s> System<'s> for PlayerCollisionSystem {
             // create a collision box for our player
             let player_left = player_transform.translation()[0];
             let player_top = player_transform.translation()[1] + player_component.height;
+            let player_bottom = player_transform.translation()[1];
             let player_right = player_left + player_component.width;
 
             // check to see if our player has collided with any enemy
@@ -29,17 +30,23 @@ impl<'s> System<'s> for PlayerCollisionSystem {
                 // create a collision box for our enemy
                 let enemy_left = enemy_transform.translation()[0];
                 let enemy_bottom = enemy_transform.translation()[1];
+                let enemy_top = enemy_transform.translation()[1] + enemy_component.height;
                 let enemy_right = enemy_left + enemy_component.width;
 
                 // if the two collision boxes overlap,
                 if ((player_left <= enemy_right && player_left >= enemy_left)
-                    || (player_right <= enemy_left && player_right >= enemy_right))
-                    && (player_top >= enemy_bottom) {
+                    || 
+                    (player_right <= enemy_left && player_right >= enemy_right))
+                    && ((player_top >= enemy_bottom && player_bottom <= enemy_top) 
+                    ||
+                    (enemy_top >= player_bottom && enemy_bottom <= player_top)
+                    )
+                    {
+
                     // we have a collision. Decrement the number of lives of the game
                     if play_state.lives > 0 {
                         play_state.lives -= 1;
                     }
-
                 }
             }
         }
