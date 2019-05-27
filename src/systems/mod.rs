@@ -21,6 +21,5 @@ pub fn get_vector(start: (f32, f32), end: (f32, f32)) -> (f32 , f32) {
     let dy = end.1 - start.1;
     let mag = f32::sqrt(dx.powi(2) + dy.powi(2));
 
-
     (dx / mag, dy / mag)
 }

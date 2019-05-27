@@ -52,10 +52,7 @@ impl<'s> System<'s> for PlayerSystem {
                     if let Some((x, y)) = input.mouse_position() {
                       run = x as f32 - fire_pos.x;
                       rise = (1000.0 - y) as f32 - fire_pos.y;
-                    }
-                    
-
-                    println!("FIRE!!!: char: {:?}, mouse: {:?}", transform.translation(), input.mouse_position());
+                    }                    
 
                     //fire(STUFF)
                     fire_projectile(&entities, &projectile_resource, fire_pos, &lazy_update, rise, run);
