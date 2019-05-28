@@ -6,10 +6,12 @@ This project is using the Amethyst engine, version 0.10.0
 
 ## Building
 Building on Ubuntu
+
 The following packages need to be installed:
 $ apt install gcc pkg-config openssl libasound2-dev cmake build-essential python3 libfreetype6-dev libexpat1-dev libxcb-composite0-dev
 
 Building on Windows
+
 The vs build tools needs to be installed if you are using vscode.
 
 ## How to run
