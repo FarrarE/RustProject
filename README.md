@@ -1,5 +1,5 @@
 # RustProject
-Rust Project for CS410P
+This is our Rust Project for CS410P. It is a topdown shooter where you have to survive as long as you can against waves of enemies. 
 
 ## Engine
 This project is using the Amethyst engine, version 0.10.0
