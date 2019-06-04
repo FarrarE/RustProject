@@ -2,7 +2,7 @@
 This is our Rust Project for CS410P. It is a topdown shooter where you have to survive as long as you can against waves of enemies. 
 
 ## How To Play
-How to play. Move using WASD and try to avoid the enemies. You can fire a projectile by clicking in the game arena with the mouse. Survive as long as you can!
+Move using WASD and try to avoid the enemies. You can fire a projectile by clicking in the game arena with the mouse. Survive as long as you can!
 
 ## Engine
 This project is using the Amethyst engine, version 0.10.0
