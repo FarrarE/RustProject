@@ -1,12 +1,9 @@
-use amethyst::prelude::Builder;
-use amethyst::ecs::prelude::{Entity, World};
-use amethyst::core::transform::{Transform};
+use amethyst::ecs::prelude::{World};
 
 
 use crate::components::Enemy as EnemyComponent;
 use crate::resources::EnemyResource;
 use super::png_mesh_and_mat;
-use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::config::GAME_CONFIGURATION;
 
 

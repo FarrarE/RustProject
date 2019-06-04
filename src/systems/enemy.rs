@@ -1,11 +1,10 @@
 use amethyst::{
     core::{timing::Time, transform::Transform},
-    ecs::prelude::{Entities, Join, Read, ReadStorage, System, WriteStorage},
+    ecs::prelude::{Join, Read, ReadStorage, System, WriteStorage},
 };
 
 use crate::components::{Enemy, Player,};
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
-use crate::config::GAME_CONFIGURATION;
 
 use super::get_vector;
 
@@ -14,14 +13,13 @@ pub struct EnemySystem;
 
 impl<'s> System<'s> for EnemySystem {
     type SystemData = (
-      Entities<'s>,
       ReadStorage<'s, Player>,
       ReadStorage<'s, Enemy>,
       WriteStorage<'s, Transform>,
       Read<'s, Time>,
     );
 
-    fn run(&mut self, (entities, players, enemies, mut transforms, time): Self::SystemData) {
+    fn run(&mut self, (players, enemies, mut transforms, time): Self::SystemData) {
       let mut player_x = 0.0;
       let mut player_y = 0.0;
 

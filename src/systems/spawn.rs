@@ -1,10 +1,9 @@
 use amethyst::{
     core::{timing::Time, transform::Transform},
-    ecs::prelude::{Entities, Join, Read, ReadStorage, System, WriteStorage, WriteExpect, LazyUpdate, Entity, ReadExpect},
+    ecs::prelude::{Entities, Read, System, WriteExpect, LazyUpdate, Entity, ReadExpect},
 };
 use rand::Rng;
 
-use crate::components::{Enemy};
 use crate::entities::ENEMY_HEIGHT;
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};
 use crate::config::GAME_CONFIGURATION;
@@ -16,8 +15,6 @@ pub struct SpawnSystem;
 impl<'s> System<'s> for SpawnSystem {
     type SystemData = (
       Entities<'s>,
-      WriteStorage<'s, Enemy>,
-      WriteStorage<'s, Transform>,
       WriteExpect<'s, EnemyResource>,
       Read<'s, Time>,
       ReadExpect<'s, LazyUpdate>,
@@ -25,7 +22,7 @@ impl<'s> System<'s> for SpawnSystem {
 
     //The order of items in the SystemData type needs to match the order of the names in the tuple argument for run()
 
-    fn run(&mut self, (entities, mut enemy, mut transforms, mut enemy_resource, time, lazy_update): Self::SystemData) {
+    fn run(&mut self, (entities, mut enemy_resource, time, lazy_update): Self::SystemData) {
         let mut rng = rand::thread_rng();
 
         if enemy_resource.time_till_next_spawn > 0.0 {
