@@ -1,15 +1,13 @@
-
 use amethyst::core::transform::Transform;
-use amethyst::ecs::prelude::{Join, System, ReadStorage, WriteStorage, Write};
+use amethyst::ecs::prelude::{Join, ReadStorage, System, Write, WriteStorage};
 
-use crate::components::Player;
 use crate::components::Enemy;
+use crate::components::Player;
 use crate::resources::PlayState;
 
 pub struct PlayerCollisionSystem;
 
 impl<'s> System<'s> for PlayerCollisionSystem {
-
     type SystemData = (
         Write<'s, PlayState>,
         ReadStorage<'s, Player>,
@@ -35,14 +33,10 @@ impl<'s> System<'s> for PlayerCollisionSystem {
 
                 // if the two collision boxes overlap,
                 if ((player_left <= enemy_right && player_left >= enemy_left)
-                    || 
-                    (player_right <= enemy_left && player_right >= enemy_right))
-                    && ((player_top >= enemy_bottom && player_bottom <= enemy_top) 
-                    ||
-                    (enemy_top >= player_bottom && enemy_bottom <= player_top)
-                    )
-                    {
-
+                    || (player_right <= enemy_left && player_right >= enemy_right))
+                    && ((player_top >= enemy_bottom && player_bottom <= enemy_top)
+                        || (enemy_top >= player_bottom && enemy_bottom <= player_top))
+                {
                     // we have a collision. Decrement the number of lives of the game
                     if play_state.lives > 0 {
                         play_state.lives -= 1;

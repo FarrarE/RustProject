@@ -12,11 +12,8 @@ pub struct Projectile {
     pub rise: f32,
 
     pub run: f32,
-    
 }
 
-impl Component for Projectile { 
+impl Component for Projectile {
     type Storage = DenseVecStorage<Self>;
 }
-
-  

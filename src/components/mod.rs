@@ -1,10 +1,10 @@
+mod enemy;
 mod player;
 mod projectile;
-mod enemy;
 
+pub use enemy::Enemy;
 pub use player::Player;
 pub use projectile::Projectile;
-pub use enemy::Enemy;
 
 use amethyst::prelude::World;
 

@@ -1,6 +1,6 @@
-use amethyst::renderer::{Material, Mesh};
-use amethyst::assets::Handle;
 use crate::components::Projectile as ProjectileComponent;
+use amethyst::assets::Handle;
+use amethyst::renderer::{Material, Mesh};
 
 #[derive(Clone)]
 pub struct ProjectileResource {

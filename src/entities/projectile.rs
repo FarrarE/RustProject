@@ -1,14 +1,14 @@
-use amethyst::ecs::prelude::{World, Entities, Entity, LazyUpdate, ReadExpect};
-use amethyst::core::transform::{Transform};
 use amethyst::core::nalgebra::Vector3;
+use amethyst::core::transform::Transform;
+use amethyst::ecs::prelude::{Entities, Entity, LazyUpdate, ReadExpect, World};
 
 use super::png_mesh_and_mat;
-use crate::config::GAME_CONFIGURATION;
 use crate::components::Projectile as ProjectileComponent;
+use crate::config::GAME_CONFIGURATION;
 use crate::resources::ProjectileResource;
 
 pub fn initialise_projectile_resource(world: &mut World) -> ProjectileResource {
-    let (mesh, material) = png_mesh_and_mat("projectile.png", [20.0,20.0], world);
+    let (mesh, material) = png_mesh_and_mat("projectile.png", [20.0, 20.0], world);
 
     let projectile_resource = ProjectileResource {
         mesh,
@@ -31,9 +31,9 @@ pub fn fire_projectile(
     fire_position: Vector3<f32>,
     lazy_update: &ReadExpect<LazyUpdate>,
     rise: f32,
-    run: f32)
-{
-    let projectile_entity:Entity = entities.create();
+    run: f32,
+) {
+    let projectile_entity: Entity = entities.create();
     let local_transform = {
         let mut local_transform = Transform::default();
         local_transform.set_position(fire_position);

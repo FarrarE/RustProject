@@ -1,17 +1,18 @@
-pub mod player;
-pub mod projectile;
 pub mod camera;
 pub mod enemy;
+pub mod player;
+pub mod projectile;
 
-use amethyst::ecs::prelude::World;
-use amethyst::renderer::{PngFormat, Texture, TextureMetadata, PosTex, Mesh, Material, MaterialDefaults};
-use amethyst::assets::{AssetStorage, Loader, Handle};
+use amethyst::assets::{AssetStorage, Handle, Loader};
 use amethyst::core::nalgebra::{Vector2, Vector3};
+use amethyst::ecs::prelude::World;
+use amethyst::renderer::{
+    Material, MaterialDefaults, Mesh, PngFormat, PosTex, Texture, TextureMetadata,
+};
 
-//pub use self::entity??::{methodnames} //to make methods available elsewhere 
-pub use self::projectile::fire_projectile;
+//pub use self::entity??::{methodnames} //to make methods available elsewhere
 pub use self::enemy::{ENEMY_HEIGHT, ENEMY_WIDTH};
-
+pub use self::projectile::fire_projectile;
 
 pub fn init_entities(world: &mut World) {
     player::initialise_player(world);
@@ -20,9 +21,13 @@ pub fn init_entities(world: &mut World) {
     enemy::initialise_enemy_resource(world);
 }
 
-pub fn png_mesh_and_mat(name: &'static str, png_sz: [f32; 2], world: &mut World) -> (Handle<Mesh>, Material) {
+pub fn png_mesh_and_mat(
+    name: &'static str,
+    png_sz: [f32; 2],
+    world: &mut World,
+) -> (Handle<Mesh>, Material) {
     let loader = world.read_resource::<Loader>();
-    
+
     let albedo = loader.load(
         name,
         PngFormat,
@@ -38,16 +43,17 @@ pub fn png_mesh_and_mat(name: &'static str, png_sz: [f32; 2], world: &mut World)
         ..mat_defaults.0.clone()
     };
 
-    let vertices = create_png_vertices(0.0, 0.0,png_sz[0],png_sz[1]);
+    let vertices = create_png_vertices(0.0, 0.0, png_sz[0], png_sz[1]);
 
     let mesh = loader.load_from_data(
         vertices.into(),
         (),
-        &world.read_resource::<AssetStorage<Mesh>>());
+        &world.read_resource::<AssetStorage<Mesh>>(),
+    );
     (mesh, material)
 }
 
-pub fn create_png_vertices(left: f32, bottom: f32, right:f32, top:f32) -> Vec<PosTex> {
+pub fn create_png_vertices(left: f32, bottom: f32, right: f32, top: f32) -> Vec<PosTex> {
     vec![
         PosTex {
             position: Vector3::new(left, bottom, 0.0),
