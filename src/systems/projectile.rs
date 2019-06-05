@@ -36,11 +36,7 @@ impl<'s> System<'s> for ProjectileSystem {
             // Delete the projectile if it has gone off the screen
             if projectile_transform.translation()[1] > ARENA_HEIGHT
                 || projectile_transform.translation()[1] < 0.0
-            {
-                let _result = entities.delete(projectile_entity);
-            }
-            // Delete the projectile if it has gone off the screen
-            else if projectile_transform.translation()[0] > ARENA_WIDTH
+                || projectile_transform.translation()[0] > ARENA_WIDTH
                 || projectile_transform.translation()[0] < 0.0
             {
                 let _result = entities.delete(projectile_entity);
