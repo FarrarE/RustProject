@@ -1,6 +1,5 @@
 //#![deny(missing_docs)]
 extern crate amethyst;
-
 mod bundle;
 pub mod components;
 mod config;
