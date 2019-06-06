@@ -2,6 +2,7 @@ pub mod camera;
 pub mod enemy;
 pub mod player;
 pub mod projectile;
+pub mod ui;
 
 use amethyst::assets::{AssetStorage, Handle, Loader};
 use amethyst::core::nalgebra::{Vector2, Vector3};
@@ -19,6 +20,7 @@ pub fn init_entities(world: &mut World) {
     camera::initialise_camera(world);
     projectile::initialise_projectile_resource(world);
     enemy::initialise_enemy_resource(world);
+    ui::initialise_headsupdisplay(world);
 }
 
 pub fn png_mesh_and_mat(

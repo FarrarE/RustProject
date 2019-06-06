@@ -1,10 +1,9 @@
 use amethyst::{
-    // --snip--
     ecs::prelude::{Component, DenseVecStorage, Entity},
 };
  
 #[derive(Default)]
-pub struct HeadsUpDisplay{
+pub struct UI{
     pub score: i32,
 }
 
