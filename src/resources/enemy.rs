@@ -1,6 +1,6 @@
-use amethyst::renderer::{Material, Mesh};
-use amethyst::assets::Handle;
 use crate::components::Enemy as EnemyComponent;
+use amethyst::assets::Handle;
+use amethyst::renderer::{Material, Mesh};
 
 #[derive(Clone)]
 pub struct EnemyResource {

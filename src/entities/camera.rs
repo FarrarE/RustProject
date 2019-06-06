@@ -1,6 +1,6 @@
-use amethyst::prelude::Builder;
-use amethyst::ecs::prelude::{World};
 use amethyst::core::transform::Transform;
+use amethyst::ecs::prelude::World;
+use amethyst::prelude::Builder;
 use amethyst::renderer::{Camera, Projection};
 
 use crate::config::{ARENA_HEIGHT, ARENA_WIDTH};

@@ -1,6 +1,7 @@
 use amethyst::ecs::prelude::{Component, DenseVecStorage};
 
 //The Player Component
+#[derive(Default)]
 pub struct Player {
     pub width: f32,
     pub height: f32,

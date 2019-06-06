@@ -1,7 +1,7 @@
 use amethyst::ecs::prelude::{Component, DenseVecStorage};
 
 //The Enemy Component
-#[derive(Clone)]
+#[derive(Clone, Default)]
 pub struct Enemy {
     pub width: f32,
     pub height: f32,
